@@ -1,0 +1,14 @@
+.row
+  .span12
+    h1 Listagem de coordenadores
+    table.table.table-striped
+      thead
+        tr
+          th Nome
+          th Email
+          th Status
+          th.ta-right Ações
+      tbody
+        = render @coordenadores
+
+    = link_to 'Novo usuário', new_coordenador_path, :class => "btn btn-small"

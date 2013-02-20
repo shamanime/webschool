@@ -1,0 +1,12 @@
+= image_tag 'admin/heart.png', :alt => 'Bras Sun Heart', :class => 'bs-heart-marca'
+= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :class => "form-devise" }) do |f|
+  - if resource.errors.any?
+    .alert.alert-error.mt30
+      a class="close" data-dismiss="alert" ×
+      - resource.errors.full_messages.each do |msg|
+        = msg
+  h2.form-devise-heading= t("devise.passwords.new.title")
+  = f.hidden_field :reset_password_token
+  = f.text_field :email, :placeholder => "Email", :class => "input-block-level"
+  = f.submit t("devise.passwords.new.submit"), :class => "btn btn-large"
+  = render "devise/shared/links"

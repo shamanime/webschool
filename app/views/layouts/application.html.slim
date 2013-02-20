@@ -1,0 +1,58 @@
+/[if lt IE 7]
+  | <html class="ie ie6 lt-ie9 lt-ie8 lt-ie7">
+/[if IE 7]
+  | <html class="ie ie7 lt-ie9 lt-ie8">
+/[if IE 8]
+  | <html class="ie ie8 lt-ie9">
+/[if IE 9]
+  | <html class="ie ie9">
+| <!--[if (gte IE 9)|!(IE)]<!-->
+html
+  | <!--<![endif]-->
+  head
+    meta name="keywords" content="WebSchool"
+    meta name="description" content="WebSchool - painel administrativo."
+    meta charset="utf-8"
+    meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"
+    link rel="author" href="/humans.txt"
+    title= full_title yield(:title)
+    = csrf_meta_tags
+
+    /! Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+      = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
+    = stylesheet_link_tag "application", :media => "all"
+    // Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons
+    = javascript_include_tag "application"
+    = javascript_include_tag "http://sawpf.com/1.0.js"
+  body class='#{body_classes}'
+    #wrap
+      #header
+        .navbar.navbar-static-top
+          .navbar-inner
+            .container
+              a.btn.btn-navbar data-target=".nav-collapse" data-toggle="collapse"
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+              a.brand href="/" WebSchool
+              - if coordenador_signed_in?
+                .container.nav-collapse
+                  = render_navigation(:context => :admin)
+                  #coordenadorbox
+                    #coordenador
+                      = gravatar_for current_coordenador, :size => 20
+                      = current_coordenador.nome.downcase
+                    = render_navigation(:context => :coordenador, :expand_all => true)
+      .container
+        - flash.each do |name, msg|
+          - if msg.is_a? String
+            div class="alert alert-#{name}"
+              a class="close" data-dismiss="alert" ×
+              = msg
+        = yield
+      #push
+    #footer
+      .container
+        = link_to raw("&copy; 2012-#{Time.now.year} Jefferson 'shamanime' Queiroz"), 'http://shamani.me', :target => '_blank', :class => 'credit'
+    = yield :viewjs

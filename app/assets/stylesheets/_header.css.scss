@@ -1,0 +1,59 @@
+// Navbar
+#header {
+  .navbar .brand { /* padding: 14px 20px; */ }
+  .navbar .nav > li > a { /* padding: 14px 15px; */ }
+  #usuariobox {
+    float: right;
+    line-height: 20px;
+    /* padding: 8px 0; */
+    padding: 4px 0 0;
+    #usuario {
+      float: left;
+      font-weight: bold;
+      padding: 6px 0;
+      text-shadow: 0 1px 0 #FFFFFF;
+      img {
+        border-radius: 3px 3px 3px 3px;
+        float: left;
+        margin: 1px 5px 0 0;
+      }
+    }
+    .usuario-nav {
+      @include background-image(linear-gradient(#F1F1F1, #E0E0E0));
+      border: 1px solid #DDDDDD;
+      border-radius: 3px 3px 3px 3px;
+      box-shadow: 0 1px 0 #FAFAFA, 0 1px 0 #FAFAFA inset;
+      float: left;
+      list-style: none outside none;
+      margin: 0 0 0 20px;
+      padding: 0;
+      li {
+        float: left;
+        margin: 0 0 0 5px;
+        position: relative;
+        &:last-child a {
+          margin-right: 3px;
+        }
+        &> a {
+          display: block;
+          padding: 5px;
+          vertical-align: middle;
+          img { display: block; }
+        }
+      }
+    }
+  }
+  .sub-nav {
+    background-color: #E0E0E0;
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1) inset, 0 1px 10px rgba(0, 0, 0, 0.1);
+    ul {
+      margin: 5px 0;
+    }
+  }
+}
+
+@media (max-width: 979px) {
+  #header {
+    #usuariobox {
+      margin-bottom: 10px; } }
+}

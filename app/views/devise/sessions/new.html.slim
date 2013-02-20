@@ -1,0 +1,11 @@
+= image_tag 'admin/heart.png', :alt => 'Bras Sun Heart', :class => 'bs-heart-marca'
+= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => "form-devise"}) do |f|
+  h2.form-devise-heading Por favor faça login
+  = f.text_field :email, :placeholder => "Email", :class => "input-block-level"
+  = f.password_field :password, :placeholder => "Senha", :class => "input-block-level"
+  = if devise_mapping.rememberable?
+    label.checkbox
+      = f.check_box :remember_me
+      Lembrar me
+  = f.submit "Entrar", :class => "btn btn-large"
+  = render "devise/shared/links"

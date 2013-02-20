@@ -1,0 +1,31 @@
+= form_for @coordenador, :html => { :class => 'form-centered' } do |f|
+  - if @coordenador.errors.any?
+    .alert.alert-error
+      strong = "#{pluralize(@coordenador.errors.count, "erro impediu", "erros impediram")} que esse cadastro fosse salvo:"
+      ol
+        - @coordenador.errors.full_messages.each do |msg|
+          li = msg
+  .boxed-group
+    h3 Dados do usuário
+    .boxed-group-inner
+      dl.form
+        dt= f.label :nome
+        dd= f.text_field :nome, :placeholder => "Nome", :class => "input-block-level"
+      dl.form
+        dt= f.label :email
+        dd= f.text_field :email, :placeholder => "Email", :class => "input-block-level"
+      dl.form
+        dt= f.label :password
+        dd= f.password_field :password, :placeholder => "Senha", :class => "input-block-level"
+      dl.form
+        dt= f.label :password_confirmation
+        dd= f.password_field :password_confirmation, :placeholder => "Confirmação de senha", :class => "input-block-level"
+      dl.form
+        dt
+          label.checkbox
+            = f.check_box :ativo
+            | Acessa o sistema
+  .form-actions
+    = f.submit :class => 'btn btn-large btn-success', :id => 'coordenador_form_submit'
+    |  ou 
+    = link_to 'cancelar', f.object.new_record? ? coordenadores_path : @coordenador

@@ -1,4 +1,9 @@
 Webschool::Application.routes.draw do
+  root :to => 'coordenadores#index'
+
+  devise_for :coordenadores
+  resources :coordenadores
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

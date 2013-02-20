@@ -1,0 +1,6 @@
+pt-BR:
+  mongoid:
+    attributes:
+      coordenador:
+        password: 'Senha'
+        password_confirmation: 'Confirmação de senha'
