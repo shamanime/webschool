@@ -37,4 +37,16 @@ Webschool::Application.configure do
 
   Slim::Engine.set_default_options :pretty => true
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address              => 'smtp.gmail.com',
+    :port                 => 587,
+    :domain               => 'gmail.com',
+    :user_name            => ENV['GMAIL_USR'],
+    :password             => ENV['GMAIL_PWD'],
+    :authentication       => 'plain',
+    :enable_starttls_auto => true  }
+
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.asset_host = 'http://localhost:3000'
 end
